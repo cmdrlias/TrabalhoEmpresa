@@ -4,6 +4,7 @@ import java.util.*;
 public class Funcionarios {
 	Scanner read = new Scanner(System.in);
 	
+	private String DepartamentoFuncionario;
 	private String NomeFuncionario;
 	private String CPF;
 	private String RG;
@@ -11,7 +12,7 @@ public class Funcionarios {
 	private String DataEntrada;
 	private float Salario;
 	
-	public void CadastrarFuncionario(String ramo_departamento) {
+	public void CadastrarFuncionario() {
 		System.out.printf("\nNome: ");
 		setNomeFuncionario(read.nextLine());
 		System.out.printf("CPF: ");
@@ -24,53 +25,9 @@ public class Funcionarios {
 		setDataEntrada(read.nextLine());
 		System.out.printf("Salário: ");
 		setSalario(read.nextFloat());
-		int resp = 0;
-		do {
-			System.out.println("O que deseja fazer?"
-					+ "\n1. Bonificar Funcionário"
-					+ "\n2. Trocar Funcionário de Departamento"
-					+ "\n3. Promover Funcionário"
-					+ "\n4. Calcular Valor Anual do Salário"
-					+ "\n5. Finalizar");
-			resp = read.nextInt();
-			switch(resp) {
-				case 1:
-					BonificarFuncionario();
-					break;
-				case 2:
-					TrocarDepartamento(ramo_departamento);
-					break;
-				case 3:
-					PromoverFuncionario();
-					break;
-				case 4:
-					SalarioAnual();
-					break;
-				default:
-					System.out.println("Opção inválida!");
-					break;
-			}
-		} while(resp != 5);
-	}
-	
-	public float BonificarFuncionario() {
-		float bonificacao = 0, porc = 0, sal_atual = getSalario();
-		System.out.println("Porcentagem da bonificação: ");
-		porc = read.nextFloat();
-		bonificacao = getSalario() * porc;
-		setSalario(bonificacao + sal_atual);
-		return getSalario();
-	}
-	
-	public void TrocarDepartamento(String ramo_departamento) {
-		ramo_departamento = read.nextLine();
-		Empresa e = new Empresa();
-		e.TrocarFuncionarioDepartamento(ramo_departamento);
-	}
-	
-	public void PromoverFuncionario() {
-		System.out.println("Novo cargo do funcionário: ");
-		setNivelCargo(read.nextLine());
+		
+		System.out.println("Salário anual do funcionário: ");
+		SalarioAnual();
 	}
 	
 	public void SalarioAnual() {
@@ -112,6 +69,13 @@ public class Funcionarios {
 	}
 	public void setSalario(float salario) {
 		Salario = salario;
+	}
+	public String getDepartamentoFuncionario() {
+		return DepartamentoFuncionario;
+	}
+
+	public void setDepartamentoFuncionario(String departamentoFuncionario) {
+		DepartamentoFuncionario = departamentoFuncionario;
 	}
 
 }

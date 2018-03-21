@@ -5,8 +5,7 @@ public class Departamentos extends Empresa {
 	Scanner read = new Scanner(System.in);
 	
 	private String RamoDepartamento;
-	private String NumeroFuncionarios;
-	public ArrayList<Funcionarios> funcionarios_list;
+	private int NumeroFuncionarios;
 	
 	public Departamentos() {}
 	
@@ -14,38 +13,7 @@ public class Departamentos extends Empresa {
 		System.out.printf("\nRamo do Departamento: ");
 		setRamoDepartamento(read.nextLine());
 		System.out.printf("Número de funcionários do departamento: ");
-		setNumeroFuncionarios(read.nextLine());
-		
-		String resp = "sim";
-		funcionarios_list = new ArrayList<Funcionarios>();
-		
-		do {
-		System.out.println("\nDeseja Cadastrar um funcionário?");
-		resp = read.nextLine().toLowerCase();
-			if(resp.equals("sim")) {
-				AdicionarFuncionario();
-			} else {
-				System.out.println("\nContinuar.\n");
-			}
-		} while (resp.equals("sim"));
-	}
-	
-	public void AdicionarFuncionario() {
-		Funcionarios func = new Funcionarios();
-		func.CadastrarFuncionario(getRamoDepartamento());
-		funcionarios_list.add(func);
-	}
-	
-	public void ShowListaFuncionarios() {
-		System.out.println("\nFuncionários do Departamento\n");
-		for(int j = 0; j < funcionarios_list.size(); j++) {
-			System.out.println("Nome: " + funcionarios_list.get(j).getNomeFuncionario());
-			System.out.println("CPF: " + funcionarios_list.get(j).getCPF());
-			System.out.println("RG: " + funcionarios_list.get(j).getRG());
-			System.out.println("Nivel de Cargo: " + funcionarios_list.get(j).getNivelCargo());
-			System.out.println("Data de Admissão: " + funcionarios_list.get(j).getDataEntrada());
-			System.out.println("Salário: " + funcionarios_list.get(j).getSalario());
-		}
+		setNumeroFuncionarios(read.nextInt());
 	}
 	
 	public String getRamoDepartamento() {
@@ -55,11 +23,11 @@ public class Departamentos extends Empresa {
 		RamoDepartamento = ramoDepartamento;
 	}
 
-	public String getNumeroFuncionarios() {
+	public int getNumeroFuncionarios() {
 		return NumeroFuncionarios;
 	}
 
-	public void setNumeroFuncionarios(String numeroFuncionarios) {
+	public void setNumeroFuncionarios(int numeroFuncionarios) {
 		NumeroFuncionarios = numeroFuncionarios;
 	}
 	
